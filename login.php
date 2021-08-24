@@ -1,26 +1,26 @@
 <?php
 
-    function CanLogin($username, $password){
-        if ($username === "ruben" && $password === "test123") {
-            return true;
-        } else {
-            return false;
-        }
-    }
+include_once("classes/Db.php");
+include_once("classes/User.php");
+
 
     if (!empty($_POST)) {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-
-        if (CanLogin($username, $password)){
-            session_start();
-            $_SESSION["username"] = $username;
-            header("Location: index.php");
-        } else {
-            $error = true;
+            $user = new User();
+            $user->setUsername($_POST['username']);
+            $user->setPassword($_POST['password']);
+        
+        try{
+            if($user->canLogin()){
+                session_start();
+                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['id'] = $user->getId();
+                header("Location: index.php");
+            }  
+        } catch (\Throwable $th) {
+            $error = $th->getMessage();
         }
+            
     }
-
 ?>
 
 <!DOCTYPE html>
