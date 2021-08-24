@@ -1,3 +1,28 @@
+<?php
+
+    function CanLogin($username, $password){
+        if ($username === "ruben" && $password === "test123") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    if (!empty($_POST)) {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        if (CanLogin($username, $password)){
+            session_start();
+            $_SESSION["username"] = $username;
+            header("Location: index.php");
+        } else {
+            $error = true;
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +36,7 @@
 </head>
 
 <body>
-    <div class="height-90 flex-c-c container w-50">
+    <div class="height-90 flex-c-c container">
         <div class="box-small ">
             <form method="POST">
                 <h1 class="h3 mb-3 fw-normal">Please login</h1>

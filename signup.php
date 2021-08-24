@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="height-90 flex-c-c">
+    <div class="height-90 flex-c-c container">
         <div class="box-small ">
             <form class="m-auto" method="POST">
                 <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
