@@ -11,7 +11,7 @@
 <body>
     <div class="height-90 flex-c-c container">
         <div class="box-small ">
-            <form class="m-auto" method="POST">
+            <form class="m-auto" method="POST" action="">
                 <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
                 <div class="row g-3 mb-3">
                     <div class="col">

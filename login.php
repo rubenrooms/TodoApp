@@ -38,7 +38,7 @@
 <body>
     <div class="height-90 flex-c-c container">
         <div class="box-small ">
-            <form method="POST">
+            <form method="POST" action="">
                 <h1 class="h3 mb-3 fw-normal">Please login</h1>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
