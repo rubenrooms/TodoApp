@@ -4,11 +4,11 @@ include_once("classes/Db.php");
 include_once("classes/User.php");
 
 
-    if (!empty($_POST)) {
+        if (!empty($_POST)) {
             $user = new User();
             $user->setUsername($_POST['username']);
             $user->setPassword($_POST['password']);
-        
+
         try{
             if($user->canLogin()){
                 session_start();
@@ -19,7 +19,6 @@ include_once("classes/User.php");
         } catch (\Throwable $th) {
             $error = $th->getMessage();
         }
-            
     }
 ?>
 
