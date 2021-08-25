@@ -18,6 +18,13 @@ include_once("classes/List.php");
             $list->save();
         }
     
+    $list = new TodoList();
+
+    try{
+        $lists = $list->getAllTodoLists();
+    } catch (Throwable $th){
+        $error = $th->getMessage();
+    }
         
 ?>
 
@@ -47,5 +54,14 @@ include_once("classes/List.php");
             <button class="btn btn-primary">Add new list</button>
         </div>
     </form>
+    <?php foreach ($lists as $list): ?>
+    <section id="Todolists">
+        <a href="#"><div>
+            <h4><?php echo $list['name'] ?></h4>
+            <button>Delete</button>
+        </div></a>
+    </section>
+    <?php endforeach; ?>
+
 </body>
 </html>

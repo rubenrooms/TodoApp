@@ -84,9 +84,14 @@ class TodoList
         return $this;
     }
 
-    public static function getAllTodoLists() 
+    public function getAllTodoLists() 
     {
         $conn = Db::getConnection();
-        
+
+        $sql = "SELECT * FROM Lists";
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+
+        return $statement->fetchAll();  
     }
 }
