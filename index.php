@@ -9,7 +9,6 @@ include_once("classes/List.php");
         echo "not logged in";
         header("Location: login.php");
     }
-    var_dump($_SESSION['id']);
 
         if (!empty($_POST)) {
             $list = new TodoList();
@@ -54,14 +53,23 @@ include_once("classes/List.php");
             <button class="btn btn-primary">Add new list</button>
         </div>
     </form>
-    <?php foreach ($lists as $list): ?>
+    <?php foreach ($lists as $l): ?>
     <section id="Todolists">
         <a href="#"><div>
-            <h4><?php echo $list['name'] ?></h4>
-            <button>Delete</button>
+            <h4><?php echo $l['name'] ?></h4>
+            
+            <form action="" method="POST">
+                <input id="delete" class="btn btn-secondary" type="submit" data-listid="<?php echo $l['id']?>" value="Delete" name="delete">
+            </form>
+
         </div></a>
+
     </section>
     <?php endforeach; ?>
 
+    <script src="./javascript/list.js"></script>
 </body>
 </html>
+
+
+

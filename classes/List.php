@@ -88,10 +88,26 @@ class TodoList
     {
         $conn = Db::getConnection();
 
-        $sql = "SELECT * FROM Lists";
+        $sql = "SELECT * FROM Lists WHERE user_id = :id";
         $statement = $conn->prepare($sql);
+        $id = $_SESSION['id'];
+        $statement->bindValue(":id", $id);
         $statement->execute();
 
         return $statement->fetchAll();  
+    }
+
+    public function delete()
+    {
+        $conn = Db::getConnection();
+
+        $sql = "DELETE FROM Lists WHERE id = :id";
+        $statement = $conn-> prepare($sql);
+
+        $id = $this->getId();
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+
+        return $this;
     }
 }
