@@ -9,7 +9,7 @@ if(!empty($_POST)) {
     var_dump($id);
     $response = [
         'status' => 'succes',
-        'message' => 'post deleted'
+        'message' => 'list deleted'
     ];
 
     header('Content-Type: application/json');

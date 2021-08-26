@@ -44,6 +44,7 @@ include_once("classes/List.php");
         </nav>
     </header>
     <h1>Todolists</h1>
+    <a href="newTodo.php"><button class="mb-3 btn btn-warning">Add new todo</button> </a> 
     <form action="" method="POST">
         <div class="mb-3">
             <label for="name" class="form-label">Name of the list</label>
@@ -55,7 +56,7 @@ include_once("classes/List.php");
     </form>
     <?php foreach ($lists as $l): ?>
     <section id="Todolists">
-        <a href="#"><div>
+        <a href="#" onclick="window.location='listpage.php?list=<?php echo $l['id']?>'"><div>
             <h4><?php echo $l['name'] ?></h4>
             
             <form action="" method="POST">
