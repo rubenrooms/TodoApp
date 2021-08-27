@@ -28,18 +28,10 @@ if(isset($_SESSION["username"])){
             $todo->setDeadline($_POST['todoDeadline']);
             $todo->setUser_id($_SESSION['id']);
             $todo->setList_id($_POST['listDropdown']);
+            //$listId = $_POST['listDropdown'];
             $todo->saveTodo();
-            var_dump($_POST['todoName']);
-            var_dump($_POST['todoDescription']);
-            var_dump($_POST['todoHours']);
-            var_dump($_POST['todoDeadline']);
-            var_dump($_SESSION['id']);
-            var_dump($_POST['listDropdown']);
-
         }
 
-
-        
 
 ?>
 <!DOCTYPE html>
@@ -86,7 +78,7 @@ if(isset($_SESSION["username"])){
             </select>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary">Add new Todo</button>
+            <a href="" onclick="window.location='listpage.php?list=<?php echo $listId?>'"><button type="submit" class="btn btn-primary">Add new Todo</button></a>
         </div>
     </form>
 </body>

@@ -198,4 +198,18 @@ class Todo {
 
         return $statement->execute();
     }
+
+    public function getAllTodosFromList($list_id)
+    {
+        $conn = Db::getConnection();
+
+        $sql = "SELECT * FROM Todo WHERE list_id = :list_id";
+        $statement = $conn->prepare($sql);
+        $statement->bindValue(":list_id", $list_id);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result;
+
+    }
 }

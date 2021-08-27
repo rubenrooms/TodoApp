@@ -110,4 +110,18 @@ class TodoList
 
         return $this;
     }
+
+    public function getListById()
+    {
+        $conn = Db::getConnection();
+
+        $sql = "SELECT * FROM Lists WHERE id = :id";
+        $statement = $conn->prepare($sql);
+        $id = $this->getId();
+
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        $list = $statement->fetch();
+        return $list;
+    }
 }

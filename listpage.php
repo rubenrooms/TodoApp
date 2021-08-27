@@ -1,6 +1,7 @@
 <?php
-include_once("classes/Db.php");
-include_once("classes/List.php");
+include_once(__DIR__ . "/classes/Db.php");
+include_once(__DIR__ . "classes/List.php");
+include_once(__DIR__ . "/classes/Todo.php");
 
     session_start();
     if(isset($_SESSION["username"])){
@@ -12,9 +13,20 @@ include_once("classes/List.php");
 
     if (!empty($_GET)) {
         $list = new TodoList();
-        $listId = $list->getId();
-        var_dump($listId);
+        $list->setId($_GET["list"]);
+        $currentList = $list->getListById();
+        $list_id = $list->getId();
+        $todo = new Todo();
+        $todos = $todo->getAllTodosFromList($list_id);
+        var_dump($todos);
     }
+
+    /*try{
+        $todos = $todo->getAllTodosFromList($list_id);
+        //var_dump($todos);
+    } catch (Throwable $th) {
+        $error = $th->getMessage();
+    }*/
 ?>
 
 
@@ -34,8 +46,20 @@ include_once("classes/List.php");
             <a href="logout.php">Log out</a>
         </nav>
     </header>
-    <h1>List with todo's</h1>
+    <h1>Todolist: <?php echo $currentList['name'] ?></h1>
 
+    <?php foreach ($todos as $t): ?>
+    <section id="Todos">    
+        <a href="#" ><div>
+            <h4><?php echo $t['title'] ?></h4>
+            
+            <form action="" method="POST">
+                <input id="delete" class="btn btn-secondary" type="submit" data-listid="<?php echo $t['id']?>" value="Delete" name="delete">
+            </form>
+
+        </div></a>
+    </section>
+    <?php endforeach; ?>
     
 </body>
 </html>

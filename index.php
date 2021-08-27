@@ -1,6 +1,6 @@
 <?php
-include_once("classes/Db.php");
-include_once("classes/List.php");
+include_once(__DIR__ . "/classes/Db.php");
+include_once(__DIR__ . "/classes/List.php");
 
     session_start();
     if(isset($_SESSION["username"])){
